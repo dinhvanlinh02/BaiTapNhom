@@ -162,7 +162,7 @@ $allProduct.='<tr>
           <font color="#333333"><font face="Times New Roman, serif"><font size="3" style="font-size: 13pt"><b>GI&Aacute;M
           &#272;&#7888;C</b></font></font></font></p>
           <p class="western"><br/>
-                           Team 2 Project
+                            
           </p>
         </td>
       </tr>

@@ -37,44 +37,49 @@
                   <tr>
                     <th scope="col">PRODUCT NAME</th>
                     <th scope="col">PRODUCT ID</th>
+                    <th scope="col">TITLE</th>
                     <th scope="col">PRICE</th>
-                    <th scope="col">CREATED DATE</th>
-                    <th scope="col">UPDATED DATE</th>
+                    
                     <th scope="col">&nbsp;</th>
                     <th scope="col">&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php
-                  require_once("clsSanpham.php");
-                  $sanpham = new clsSanpham();
-                  $rows = $sanpham->getListProduct();
-                  if($rows == Null)
-                    die("<p>ERROR IN DATABASE</p>");
-                  foreach($rows as $row)
-                  {
-                  ?>
-                  <tr>
-                    <td class="tm-product-name"><?=$row["title"]?></td>
-                    <td><?=$row["id"]?></td>
-                    <td><?=$row["price"]?></td>
-                    <td><?=$row["created_at"]?></td>
-                    <td><?=$row["updated_at"]?></td>
-                    <td>
-                      <a href="fix_product.php?id=<?=$row["id"]?>" class="tm-product-delete-link">
-                        <i class="fas fa-wrench tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                    <td>
-                      <a onclick="return confirm('DO YOU WANT TO DELETE PRODUCT?');" href="delete_process.php?id=<?=$row["id"]?>" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <?php
-                  }
-                  ?>
-                </tbody>
+  <?php
+  require_once("clsSanpham.php");
+  $sanpham = new clsSanpham();
+  $rows = $sanpham->getListProduct();
+  if ($rows == null) {
+      die("<p>ERROR IN DATABASE</p>");
+  }
+  foreach ($rows as $row) {
+      ?>
+      <tr>
+          <td class="tm-product-name"><?= isset($row["title"]) ? $row["title"] : "N/A" ?></td>
+          <td><?= isset($row["id"]) ? $row["id"] : "N/A" ?></td>
+          <td><?= isset($row["title"]) ? $row["title"] : "N/A" ?></td>
+
+          <td><?= isset($row["price"]) ? $row["price"] : "N/A" ?></td>
+          
+
+
+          <td>
+              <a href="fix_product.php?id=<?= $row["id"] ?>" class="tm-product-delete-link">
+                  <i class="fas fa-wrench tm-product-delete-icon"></i>
+              </a>
+          </td>
+          <td>
+              <a onclick="return confirm('DO YOU WANT TO DELETE PRODUCT?');" href="delete_process.php?id=<?= $row["id"] ?>" class="tm-product-delete-link">
+                  <i class="far fa-trash-alt tm-product-delete-icon"></i>
+              </a>
+          </td>
+
+      </tr>
+      <?php
+  }
+  ?>
+</tbody>
+
               </table>
             </div>
             <!-- table container -->
